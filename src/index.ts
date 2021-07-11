@@ -1,3 +1,4 @@
+import { authorization } from './middlewares/authorization';
 import adblocker from 'puppeteer-extra-plugin-adblocker';
 import stealth from 'puppeteer-extra-plugin-stealth';
 import puppeteer from 'puppeteer-extra';
@@ -11,6 +12,7 @@ puppeteer.use(stealth());
 
 app.use(express.json());
 app.use(helmet());
+app.use(authorization);
 app.set('json spaces', 4);
 
 app.get('/', async (req, res) => {
