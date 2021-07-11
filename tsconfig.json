@@ -1,6 +1,7 @@
 {
 	"extends": "@sapphire/ts-config",
 	"compilerOptions": {
+		"lib": ["DOM"],
 		"rootDir": "src",
 		"outDir": "dist",
 		"skipLibCheck": true

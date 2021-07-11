@@ -5,8 +5,9 @@ USER root
 
 COPY . .
 
-RUN yarn && yarn build
+RUN yarn && \
+	yarn build && \
+	apk add --no-cache tini
 
-COPY . .
-
+ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["node", "."]
