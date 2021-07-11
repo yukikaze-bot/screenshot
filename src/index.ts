@@ -26,8 +26,9 @@ app.get('/', async (req, res) => {
 		const page = await browser.newPage();
 
 		page.setDefaultNavigationTimeout(0);
-		await page.goto(url as string, { waitUntil: 'networkidle0' });
+		await page.goto(url as string);
 		await page.setViewport({ width, height });
+		await page.waitForTimeout(2500);
 
 		const ss = await page.screenshot({ fullPage });
 
