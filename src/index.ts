@@ -30,7 +30,8 @@ app.get('/', async (req, res) => {
 		const width = req.query.width ? Number(req.query.width) : 1920;
 		const height = req.query.height ? Number(req.query.height) : 1080;
 		const fullPage = req.query.full === 'yes';
-		const inCache = await redis.getBuffer(url as string).catch(() => null);
+		const rkey = fullPage ? `${url}-full` : (url as string);
+		const inCache = await redis.getBuffer(rkey).catch(() => null);
 
 		if (inCache) return res.type('png').status(200).send(inCache);
 
@@ -45,7 +46,7 @@ app.get('/', async (req, res) => {
 
 		await page.close();
 		await browser.close();
-		await redis.setex(url as string, 604800, ss);
+		await redis.setex(rkey, 604800, ss);
 
 		return res.type('png').status(200).send(ss);
 	} catch (e) {
