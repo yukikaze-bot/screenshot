@@ -50,7 +50,7 @@ app.get('/', async (req, res) => {
 		return res.type('png').status(200).send(ss);
 	} catch (e) {
 		await browser.close();
-		return res.status(500).send(e);
+		return res.status(500).send(e.message);
 	}
 });
 
