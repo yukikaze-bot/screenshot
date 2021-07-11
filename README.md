@@ -16,3 +16,14 @@ Query Parameters:
 -   width - The width of the screenshot. (not required, default is 1920)
 -   height - The height of the screenshot. (not required, default is 1080)
 -   full - If you want a full page screenshot. (not required, default is none, put 'yes' if you want a full page screenshot)
+
+Example Requests
+
+> Replace `my-custom-url.com` with your actual url.
+
+-   I want a normal screenshot.
+    -   `https://my-custom-url.com/?url=https://github.com`
+-   I want a screenshot with a custom width and height.
+    -   `https://my-custom-url.com/?url=https://google.com&width=1366&height=625`
+-   I want a full screenshot of a website.
+    -   `https://my-custom-url.com/url?=https://discord.com&full=yes`
