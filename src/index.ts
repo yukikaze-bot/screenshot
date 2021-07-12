@@ -7,6 +7,8 @@ import express from 'express';
 import helmet from 'helmet';
 import Redis from 'ioredis';
 
+process.setMaxListeners(Infinity);
+
 const app = express();
 const redis = new Redis(process.env.REDIS_URL!);
 
