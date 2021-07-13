@@ -29,4 +29,4 @@ Example Requests
 -   I want a full screenshot of a website.
     -   `https://my-custom-url.com/url?=https://discord.com&full=yes`
 -   I want to check NSFW urls.
-    -   `https://my-custom-url.com/url?=https://nsfw.link`
+    -   `https://my-custom-url.com/url?=https://nsfw.link&checkNsfw=yes`
