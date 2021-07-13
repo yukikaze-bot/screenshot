@@ -1,6 +1,7 @@
 import { authorization } from './middlewares/authorization';
 import adblocker from 'puppeteer-extra-plugin-adblocker';
 import stealth from 'puppeteer-extra-plugin-stealth';
+import { checkNsfw } from './middlewares/checkNsfw';
 import puppeteer from 'puppeteer-extra';
 import compression from 'compression';
 import express from 'express';
@@ -21,7 +22,7 @@ app.use(compression({ level: 9 }));
 app.use(authorization);
 app.set('json spaces', 4);
 
-app.get('/', async (req, res) => {
+app.get('/', checkNsfw, async (req, res) => {
 	const browser = await puppeteer.launch({
 		executablePath: '/usr/bin/chromium-browser',
 		args: ['--no-sandbox', '--disable-dev-shm-usage', '--shm-size=3gb']
@@ -58,3 +59,5 @@ app.get('/', async (req, res) => {
 });
 
 app.listen(process.env.PORT);
+
+export { redis };

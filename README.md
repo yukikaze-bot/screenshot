@@ -16,6 +16,7 @@ Query Parameters:
 -   width - The width of the screenshot. (not required, default is 1920)
 -   height - The height of the screenshot. (not required, default is 1080)
 -   full - If you want a full page screenshot. (not required, default is none, put 'yes' if you want a full page screenshot)
+-   checkNsfw - If you want to check NSFW urls. (not required, default is none, put 'yes' if you want to check urls.)
 
 Example Requests
 
@@ -27,3 +28,5 @@ Example Requests
     -   `https://my-custom-url.com/?url=https://google.com&width=1366&height=625`
 -   I want a full screenshot of a website.
     -   `https://my-custom-url.com/url?=https://discord.com&full=yes`
+-   I want to check NSFW urls.
+    -   `https://my-custom-url.com/url?=https://nsfw.link`
