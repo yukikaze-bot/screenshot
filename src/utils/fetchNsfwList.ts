@@ -10,10 +10,12 @@ export const fetchNsfwList = async () => {
 			.filter((site) => site && !site.startsWith('#'))
 			.map((site) => site.replace(/^(0.0.0.0 )/, ''));
 
-	const text = (await fetch('https://blocklistproject.github.io/Lists/alt-version/porn-nl.txt', FetchResultTypes.Text))
+	const text = await fetch('https://blocklistproject.github.io/Lists/alt-version/porn-nl.txt', FetchResultTypes.Text);
+
+	await redis.setex('nsfwList', 604800, text);
+
+	return text
 		.split('\n')
 		.filter((site) => site && !site.startsWith('#'))
 		.map((site) => site.replace(/^(0.0.0.0 )/, ''));
-
-	return text;
 };
